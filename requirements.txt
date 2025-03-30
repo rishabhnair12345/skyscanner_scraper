@@ -1,0 +1,1 @@
+selenium\nrequests\nbeautifulsoup4\nundetected-chromedriver
