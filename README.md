@@ -61,15 +61,17 @@ bash
 Copy
 Edit
 pip install requests
+
 3. 🗺️ Set Up Airport Location IDs
 Create a file named location_ids.properties in the same folder with content like:
 
-ini
+init
 Copy
 Edit
 HYD = 128668073
 JRG = 200548629
 DEL = 27539733
+
 4. ▶️ Run the Script
 bash
 Copy
@@ -89,8 +91,6 @@ The API is rate-limited on the free tier — use it cautiously or upgrade your p
  Email notification when price drops below threshold
 
  Deploy to cloud and run on a schedule
-
- Integrate with Telegram bot or Slack
 
 🧑‍💻 Author
 Crafted with 💻 by Rishabh Nair
