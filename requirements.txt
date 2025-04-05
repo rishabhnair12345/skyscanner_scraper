@@ -1,4 +1,0 @@
-selenium
-requests
-beautifulsoup4
-undetected-chromedriver
