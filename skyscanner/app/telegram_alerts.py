@@ -1,5 +1,4 @@
 import requests
-import config
 import os
 
 from dotenv import load_dotenv
@@ -7,10 +6,9 @@ load_dotenv()
 
 class TelegramNotifier:
     def __init__(self):
-        #self.token = config.TELEGRAM_BOT_TOKEN
+        
         self.token = os.getenv("TELEGRAM_BOT_TOKEN")
         self.chat_id =  os.getenv("TELEGRAM_CHAT_ID")
-        #self.chat_id = config.TELEGRAM_CHAT_ID
         self.base_url = f"https://api.telegram.org/bot{self.token}"
         
     def send_alert(self, message):
