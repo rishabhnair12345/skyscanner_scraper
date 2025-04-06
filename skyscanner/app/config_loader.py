@@ -17,3 +17,11 @@ def get_airport_code(prompt):
         except configparser.NoOptionError:
             valid_codes = ', '.join(config.options('DEFAULT'))
             print(f"Invalid code. Valid options: {valid_codes}\n")
+
+def get_location_id(prompt):
+    while True:
+        try:
+            return config.get('DEFAULT', prompt), prompt
+        except configparser.NoOptionError:
+            valid_codes = ', '.join(config.options('DEFAULT'))
+            print(f"Invalid code. Valid options: {valid_codes}\n")
