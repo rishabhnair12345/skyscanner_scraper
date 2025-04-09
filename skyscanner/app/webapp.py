@@ -18,7 +18,7 @@ def index():
         api_key = request.form['api_key'] or os.getenv("RAPIDAPI_KEY")
 
         if not api_key:
-            return render_template('index.html', error="API Key is required.")
+            return render_template('index.html', info="API Key is required.")
 
         flights = get_flight_prices(
         api_key=api_key,
