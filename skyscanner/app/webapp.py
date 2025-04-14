@@ -39,7 +39,7 @@ def index():
         results = process_flight_data(flights, origin, destination, date)
         msg=Message('Flight Search Results', sender=os.getenv('EMAIL_USER'), recipients=[email_id])
         msg.subject = "Flight Search Results"
-        msg.body = "Hello," ",\n\n"+results+" \n\nThank you for using our flight search service!"
+        msg.body = "Hello," "\n\n"+results+" \n\nThank you for using our flight search service!"
         mail.send(msg)
         print("Email sent successfully")
         # Render the results on the web page
