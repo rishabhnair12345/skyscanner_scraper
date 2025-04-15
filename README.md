@@ -36,23 +36,24 @@ Airline: IndiGo, Min Price: 4500
 Airline: SpiceJet, Min Price: 4750
 
 💰 Cheapest Flight Price: ₹4500
+
 📁 Project Structure
 
-skyscanner_scraper/
-├── setup.py # Package installation script
-├── skyscanner/ # Core package
-│ ├── app/ # Web application components
-│ │ ├── config_loader.py # Configuration management
-│ │ ├── flights.py # Flight data processing
-│ │ ├── telegram_alerts.py # Notification system
-│ │ ├── webapp.py # Flask application entry
-│ │ ├── templates/ # HTML templates
-│ │ └── requirements.txt # Python dependencies
-│ ├── Dockerfile # Container configuration
-│ └── scraper.py # Core scraping logic
-├── flight_data.json # Historical price data
-└── README.md # Documentation
-
+- skyscanner_scraper/
+  - setup.py
+  - skyscanner/
+    - app/
+      - config_loader.py
+      - flights.py
+      - telegram_alerts.py
+      - webapp.py
+      - templates/
+      - requirements.txt
+    - Dockerfile
+    - scraper.py
+  - flight_data.json
+  - README.md
+  
 ⚙️ Setup Instructions
 1. 🔑 Get Your API Key
 Sign up at RapidAPI
@@ -86,13 +87,19 @@ The API is rate-limited on the free tier — use it cautiously or upgrade your p
 🚀 Running the Flask App with Docker
 
 🐳 Build the Docker Image
-docker build -t flask-flight-app .
+  
+  docker build -t flask-flight-app .
+
+
 ⚙️ Environment Variables
+
 Create a .env file at the root of the project:
 
 env
 EMAIL_USER=your-email@example.com
+
 EMAIL_PASS=your-email-password
+
 RAPIDAPI_KEY=your-rapidapi-key
 
 ✅ Do not commit this file. It's automatically excluded via .dockerignore.
@@ -102,6 +109,7 @@ Copy this template for sharing:
 cp .env .env.example
 
 🛑 Exclude Secrets from the Image
+
 Ensure your .env is not copied into the Docker image:
 
 .dockerignore
@@ -109,9 +117,11 @@ Ensure your .env is not copied into the Docker image:
 __pycache__/
 *.pyc
 *.log
+
 ▶️ Run the Container
 
 docker run --env-file .env -p 5000:5000 flask-flight-app
+
 Visit http://localhost:5000 to access the app.
 
 📦 Sample docker-compose.yml (optional)
@@ -130,6 +140,7 @@ Run it with:
 docker-compose up --build
 
 📌 TODO / Improvements
+
  Add support for round-trip searches
 
  Email notification when price drops below threshold
