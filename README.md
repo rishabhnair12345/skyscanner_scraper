@@ -24,9 +24,7 @@ This project demonstrates:
 🗂️ Save raw API response to flight_data.json for analysis or debugging
 
 🧪 Sample Output
-bash
-Copy
-Edit
+
 Enter the date (yyyy-mm-dd): 2025-04-18
 Enter destination code (e.g., JRG): JRG
 Enter origin code (e.g., BBI): HYD
@@ -39,15 +37,22 @@ Airline: SpiceJet, Min Price: 4750
 
 💰 Cheapest Flight Price: ₹4500
 📁 Project Structure
-graphql
-Copy
-Edit
+
 skyscanner_scraper/
-│
-├── run_api.py                 # Main script to run the CLI tool
-├── location_ids.properties    # Maps airport codes (e.g., HYD, JRG) to location IDs
-├── flight_data.json           # Saved API response (created after each run)
-├── README.md                  # You're here!
+├── setup.py # Package installation script
+├── skyscanner/ # Core package
+│ ├── app/ # Web application components
+│ │ ├── config_loader.py # Configuration management
+│ │ ├── flights.py # Flight data processing
+│ │ ├── telegram_alerts.py # Notification system
+│ │ ├── webapp.py # Flask application entry
+│ │ ├── templates/ # HTML templates
+│ │ └── requirements.txt # Python dependencies
+│ ├── Dockerfile # Container configuration
+│ └── scraper.py # Core scraping logic
+├── flight_data.json # Historical price data
+└── README.md # Documentation
+
 ⚙️ Setup Instructions
 1. 🔑 Get Your API Key
 Sign up at RapidAPI
@@ -57,25 +62,18 @@ Subscribe to the Skyscanner API
 Get your x-rapidapi-key
 
 2. 📦 Install Dependencies
-bash
-Copy
-Edit
+
 pip install requests
 
 3. 🗺️ Set Up Airport Location IDs
 Create a file named location_ids.properties in the same folder with content like:
 
-init
-Copy
-Edit
 HYD = 128668073
 JRG = 200548629
 DEL = 27539733
 
 4. ▶️ Run the Script
-bash
-Copy
-Edit
+
 python run_api.py
 
 📝 Notes
@@ -84,6 +82,52 @@ The script writes the full JSON API response to flight_data.json after each run.
 IATA codes (e.g., HYD, JRG) must be present in the location_ids.properties file.
 
 The API is rate-limited on the free tier — use it cautiously or upgrade your plan.
+
+🚀 Running the Flask App with Docker
+
+🐳 Build the Docker Image
+docker build -t flask-flight-app .
+⚙️ Environment Variables
+Create a .env file at the root of the project:
+
+env
+EMAIL_USER=your-email@example.com
+EMAIL_PASS=your-email-password
+RAPIDAPI_KEY=your-rapidapi-key
+
+✅ Do not commit this file. It's automatically excluded via .dockerignore.
+
+Copy this template for sharing:
+
+cp .env .env.example
+
+🛑 Exclude Secrets from the Image
+Ensure your .env is not copied into the Docker image:
+
+.dockerignore
+.env
+__pycache__/
+*.pyc
+*.log
+▶️ Run the Container
+
+docker run --env-file .env -p 5000:5000 flask-flight-app
+Visit http://localhost:5000 to access the app.
+
+📦 Sample docker-compose.yml (optional)
+
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - '5000:5000'
+    env_file:
+      - .env
+Run it with:
+
+docker-compose up --build
 
 📌 TODO / Improvements
  Add support for round-trip searches
