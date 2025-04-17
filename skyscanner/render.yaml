@@ -1,11 +1,14 @@
-# render.yaml
 services:
   - type: web
     name: skyscanner-flask
     env: python
-    buildCommand: pip install -r app/requirements.txt
-    startCommand: python app/webapp.py
+    buildCommand: |
+      pip install -r skyscanner/requirements.txt
+    startCommand: |
+      gunicorn skyscanner.app.webapp:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
+      - key: PYTHONPATH
+        value: /opt/render/project/src
     plan: free
