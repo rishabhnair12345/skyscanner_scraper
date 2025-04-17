@@ -1,5 +1,0 @@
-requests
-flask
-python-telegram-bot
-python-dotenv
-flask-mail
