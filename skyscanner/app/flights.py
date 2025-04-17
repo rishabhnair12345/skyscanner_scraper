@@ -1,6 +1,6 @@
 import requests
 import json
-from telegram_alerts import TelegramNotifier
+from .telegram_alerts import TelegramNotifier
 
 def get_flight_prices(api_key, date, origin, origin_id, destination, destination_id,
                      cabin_class="economy", adults=1, children=0, infants=0,

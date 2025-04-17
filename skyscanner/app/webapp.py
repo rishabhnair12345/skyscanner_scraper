@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import os
 from .flights import get_flight_prices, process_flight_data
-from config_loader import get_airport_code, get_location_id
+from .config_loader import get_airport_code, get_location_id
 from dotenv import load_dotenv
 load_dotenv()
 
