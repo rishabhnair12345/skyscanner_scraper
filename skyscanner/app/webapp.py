@@ -26,7 +26,7 @@ def index():
         destination_id=get_location_id(destination)
         origin_id=get_location_id(origin)
         email_id = request.form['email']
-        api_key = request.form['api_key'] or os.getenv("RAPIDAPI_KEY")
+        api_key = os.getenv("RAPIDAPI_KEY")
 
       
         flights = get_flight_prices(
