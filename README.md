@@ -2,7 +2,7 @@
 A simple Python-based command-line tool to fetch one-way flight prices between two airports using the Skyscanner API (via RapidAPI). Useful for monitoring price trends or searching for the cheapest available flights on a specific date.
 
 📌 Project Overview
-This project demonstrates:
+This project demonstrates:-
 
 ✅ Fetching flight data via RapidAPI (Skyscanner)
 
